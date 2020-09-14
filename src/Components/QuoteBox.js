@@ -4,17 +4,18 @@ import styles from '../CSS/quoteBox.module.css';
 function QuoteBox(){
   let center = "center";
   let flexEnd = "flex-end";
-  function display(justify,align){ return {color:"#0033FF",
-  backgroundColor:"#FF66CC",display:"flex", height:"200px",
-  width:"50em",justifyContent:justify, alignItems:align,border:"solid black"}}
+  function boxDisplay(justify){ return {backgroundColor:"#FF66CC",display:"flex",justifyContent:justify, alignItems:"center",border:"solid black",flexWrap:"wrap"}}
+  let textDisplay = {flexGrow:0, border:"solid black",textAlign:center,alignSelf:"center",height:"7em"};
+  let authorDisplay = {border:"solid black"};
+  let genDisplay = {width:"10em",height:"3em",border:"solid black",alignSelf:"flex-end"};
   return(
     <div>
-      <div id="quote-box" style={display(center,center)}>
-        <h1>Hello world</h1>
-        <input type="button" value="Generate" />
-      </div>
-      <div>
-        <p>hello</p>
+      <div style={{display:"flex",justifyContent:"center", alignItems:"center",backgroundColor:"blue" }}>
+        <div id="quote-box" style={boxDisplay(center,center)}>
+          <p id="text" style={textDisplay}>Hello world</p>
+          <p id="author" style={authorDisplay}> - author </p>
+          <input id="new-quote" type="button" style={genDisplay} value="Generate" />
+        </div>
       </div>
     </div>
   )

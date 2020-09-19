@@ -7,7 +7,7 @@ class App extends Component {
   }
   render(){
     return(
-    <div>
+    <div style={{height: "100%",position: "absolute",left: "0",width: "100%",overflow: "hidden",backgroundColor:"#D3DBFF"}}>
       <QuoteBox />
     </div>
   )}

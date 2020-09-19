@@ -8,12 +8,14 @@ class QuoteBox extends React.Component{
     this.state = {
       quote:"Welcome to the random quote generator! Click on 'Generate' to display a new random quote",
       author:"Hussein El Mokdad",
-      isLoading:false
+      isLoading:false,
+      showTwitterLink:false
     }
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(){
-    this.setState({isLoading:true})
+    //Shows twitter link when user clicks on generate
+    this.setState({isLoading:true, showTwitterLink:true})
     fetch("https://type.fit/api/quotes")
     .then(response => response.json())
     .then(data => {
@@ -27,9 +29,8 @@ class QuoteBox extends React.Component{
     })
   }
 render(){
-  function boxDisplay(justifyType){ return {backgroundColor:"#FF66CC"
-  ,margin:"6em",marginTop:"15em",marginBottom:"15em",display:"flex",height:"12em",
-  justifyContent:justifyType, alignItems:"center",border:"solid black",flexWrap:"wrap"}}
+  function boxDisplay(justifyType){ return {backgroundColor:"#FE91CA",display:"flex",height:"12em",
+  margin:"5em 5em",justifyContent:justifyType, alignItems:"center",border:"solid black",flexWrap:"wrap"}}
 
   let textDisplay = {textAlign:"center",alignSelf:"stretch",flex:"2 10 auto",flexWrap:"wrap"};
   let authorDisplay = {flex:"4 0 auto"};
@@ -45,7 +46,7 @@ render(){
           <p id="text" style={textDisplay}>{this.state.isLoading?"Fetching...":this.state.quote}</p>
           <p id="author" style={authorDisplay}> -{this.state.isLoading?"Thank you for waiting!":this.state.author}</p>
           {this.state.isLoading?null:<input id="new-quote" className={styles.genBox} type="button" style={genDisplay} value="Generate" onClick={this.handleClick} />}
-          {this.state.isLoading?null:<a id="tweet-quote" href={twitterLink} target="_blank" style={twitterDisplay}>tweet</a>}
+          {this.state.isLoading?null:(this.state.showTwitterLink?<a id="tweet-quote" href={twitterLink} target="_blank" style={twitterDisplay}>tweet</a>:null)}
         </div>
       </div>
     </div>

@@ -1,7 +1,5 @@
 ## Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/qRZeGZ.
 
-### Fulfill the below user stories and get all of the tests to pass. Give it your own personal style.
-
 User Story #1: I can see a wrapper element with a corresponding id="quote-box".
 
 User Story #2: Within #quote-box, I can see an element with a corresponding id="text".
